@@ -45,4 +45,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Get how many posts the user has.
+     *
+     * @return int
+     */
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }
