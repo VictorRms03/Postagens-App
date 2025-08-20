@@ -9,15 +9,24 @@ use App\Models\User;
 class LoginController extends Controller
 {
     
+    /**
+     * Validates and Authenticates login
+     * 
+     * @param Request 
+     * @return JsonResponse with autenticaded user
+     */
     public function login(Request $request) {
         
+        // Validating login parameters
         $data = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required', 'string'],
         ]);
 
+        // Get User login of Database
         $user = User::where('email', $data['email'])->first();
 
+        // Checking credentials
         if (!$user || !Hash::check( $data['password'], $user->password ) ) {
             return response()->json( ['message' => 'Credenciais inválidas'], 401 );
         }
