@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\User;
 
 class PostController extends Controller
 {
     
-    public function index() {
-        return Post::with('user:id, name')->latest()->get();
+    public function postsByAuthor(User $user) {
+        return $user->posts()->with('user:id, name')->get();
     }
 
     public function store(Request $request) {
