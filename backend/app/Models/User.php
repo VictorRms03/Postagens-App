@@ -47,9 +47,9 @@ class User extends Authenticatable
     }
 
     /**
-     * Get how many posts the user has.
+     * Get all posts of the user.
      *
-     * @return int
+     * @return Collection with all user posts.
      */
     public function posts()
     {
