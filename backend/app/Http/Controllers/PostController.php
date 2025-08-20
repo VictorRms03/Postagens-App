@@ -11,15 +11,15 @@ class PostController extends Controller
 {
     
     /**
-     * Get all posts of the user and the user 'name' and 'id'.
+     * Get all posts with User infos.
      * 
      * @param Request
-     * @return JsonResponse with all user posts with user 'id' and 'name'.
+     * @return JsonResponse with all posts with user 'id' and 'name'.
      */
-    public function postsByAuthor(Request $request) {
+    public function posts(Request $request) {
 
         // Getting all posts from Database
-        $posts = $request->user()->posts()->with('user:id, name')->get();
+        Post::with('user:id,name')->get();
 
         return response()->json($posts);
     }

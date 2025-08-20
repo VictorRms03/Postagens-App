@@ -13,7 +13,7 @@ Route::post('/login', [LoginController::class, 'login']);
 /**
  * Route to list all posts of an author
  */
-Route::get('/posts/{user}', [PostController::class, 'postsByAuthor']);
+Route::get('/posts', [PostController::class, 'posts']);
 
 /**
  * Route to create a new post
