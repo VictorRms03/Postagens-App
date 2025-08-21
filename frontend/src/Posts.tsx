@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
 import api from './api';
-import './App.css'
 
 function Posts() {
 
