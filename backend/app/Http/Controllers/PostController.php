@@ -19,7 +19,7 @@ class PostController extends Controller
     public function posts(Request $request) {
 
         // Getting all posts from Database
-        Post::with('user:id,name')->get();
+        $posts = Post::with('user:id,name')->get();
 
         return response()->json($posts);
     }
@@ -41,6 +41,6 @@ class PostController extends Controller
         // Creates new post
         $post = $request->user()->posts()->create($validated);
 
-        return response()->json($post->load('user:id, name'), 201);
+        return response()->json($post->load('user:id,name'), 201);
     }
 }
