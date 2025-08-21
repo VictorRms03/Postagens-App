@@ -2,27 +2,43 @@ import { useState } from 'react'
 import api from './api';
 import './App.css'
 
-function Login({ onLoggedIn}: { onLoggedIn: () => void }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+function Login({ onLoggedIn }: { onLoggedIn: () => void }) {
 
+  /**
+   * Use States
+   */
+  const [email, setEmail] = useState(''); // Email of login form
+  const [password, setPassword] = useState(''); // Password of login form
+  const [error, setError] = useState(''); // Msg of login form
+
+  /**
+   * Authenticate login via API and set Token on localStorage
+   * @param e Form Event
+   */
   async function handleSubmit( e: React.FormEvent ) {
     
     e.preventDefault();
     
     try {
+
         const res = await api.post('/login', { email, password });
+
         localStorage.setItem('token', res.data.token);
-        onLoggedIn();
+
+        onLoggedIn(); // Tell App.tsx that user has logged to change page
+
     } catch( err: any ) {
+
         setError( err?.response?.data?.message ?? "Falha no Login" );
+
     }
 
   }
 
   return (
-    <>
+
+    /* Login Form */
+    <div>
       <form onSubmit={handleSubmit}>
 
         <h2>Login</h2>
@@ -44,7 +60,8 @@ function Login({ onLoggedIn}: { onLoggedIn: () => void }) {
         {error && <p>{error}</p>}
 
       </form>
-    </>
+    </div>
+
   )
 }
 
