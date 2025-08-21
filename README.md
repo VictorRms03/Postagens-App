@@ -1,5 +1,10 @@
 # Postagens App
 
+## Subir Banco de Dados (Docker)
+```bash
+docker compose up -d
+```
+
 ## Como rodar o backend
 ```bash
 cd backend
