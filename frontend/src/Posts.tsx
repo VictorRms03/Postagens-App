@@ -85,20 +85,50 @@ function Posts() {
         <form onSubmit={createPost}>
 
           <div>
-            <label htmlFor="title">Título</label>
+
+            <label htmlFor="title" style={{fontWeight: "500"}}>Título</label>
+
+            <br />
+
             <input type="text" name="title" id="title" placeholder="Título" 
               value={title} onChange={e=>setTitle(e.target.value)} required
+              style={{
+                padding: "10px 14px",
+                borderRadius: "8px",
+                border: "1px solid #d1d5db",
+                fontSize: "14px",
+              }}
             />
+
           </div>
 
           <div>
-            <label htmlFor="content">Conteúdo</label>
+
+            <label htmlFor="content" style={{fontWeight: "500"}}>Conteúdo</label>
+
+            <br />
+
             <textarea name="content" id="content" placeholder="Conteúdo..." 
               value={content} onChange={e=>setContent(e.target.value)} required
+              style={{
+                padding: "10px 14px",
+                borderRadius: "8px",
+                border: "1px solid #d1d5db",
+                fontSize: "14px",
+              }}
             />
+
           </div>
           
-          <button type="submit">Postar</button>
+          <button type="submit"
+            style={{
+              padding: "10px 14px",
+              borderRadius: "8px",
+              border: "1px solid #d1d5db",
+              fontSize: "14px",
+              marginTop: '10px'
+            }}
+          >Postar</button>
 
           {msg && <p>{msg}</p>}
 
@@ -111,13 +141,31 @@ function Posts() {
 
         <h2>Postagens</h2>
 
-        <ul>
+        <ul style={{listStyle:'none', padding:0 }}>
+
           {posts.map(p => (
-            <li key={p.id} >
-              <h3>{p.title}</h3> <span> — usuário: {p.user?.name ?? 'Desconhecido'}</span>
+
+            <li key={p.id} 
+              style={{
+                padding: "1.5rem",
+                borderRadius: "12px",
+                marginBottom: "1rem",
+              }}>
+
+              <h3 style={{
+                  fontSize: "20px",
+                  fontWeight: "600",
+                  marginBottom: "0.5rem",
+                }}> {p.title} </h3>
+
+              <span> Usuário: {p.user?.name ?? 'Desconhecido'}</span>
+
               <p>{p.content}</p>
+
             </li>
+
           ))}
+
         </ul>
 
       </div>

@@ -44,20 +44,51 @@ function Login({ onLoggedIn }: { onLoggedIn: () => void }) {
         <h2>Login</h2>
 
         <div>
-            <label htmlFor="email">Email</label>
-            <br />
-            <input type="email" name="email" id="email" value={email} onChange={e=>setEmail(e.target.value)} required/>
+
+          <label htmlFor="email" style={{fontWeight: "500"}}>Email</label>
+
+          <br />
+
+          <input type="email" name="email" id="email" value={email} 
+            onChange={e=>setEmail(e.target.value)} required
+            style={{
+              padding: "10px 14px",
+              borderRadius: "8px",
+              border: "1px solid #d1d5db",
+              fontSize: "14px",
+            }}
+          />
+
         </div>
 
         <div>
-            <label htmlFor="password">Senha</label>
-            <br />
-            <input type="password" name="password" id="password" value={password} onChange={e=>setPassword(e.target.value)} required/>
+
+          <label htmlFor="password" style={{fontWeight: "500"}}>Senha</label>
+
+          <br />
+
+          <input type="password" name="password" id="password" value={password} 
+            onChange={e=>setPassword(e.target.value)} required
+            style={{
+              padding: "10px 14px",
+              borderRadius: "8px",
+              border: "1px solid #d1d5db",
+              fontSize: "14px",
+            }}  
+          />
+
         </div>
 
-        <button type="submit">Entrar</button>
+        <button type="submit"
+          style={{
+            padding: "10px 14px",
+            borderRadius: "8px",
+            border: "1px solid #d1d5db",
+            fontSize: "14px",
+            marginTop: '10px'
+          }}> Entrar </button>
 
-        {error && <p>{error}</p>}
+        {error && <p style={{color:'red'}} >{error}</p>}
 
       </form>
     </div>
