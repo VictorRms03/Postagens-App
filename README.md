@@ -1,5 +1,14 @@
 # Postagens App
 
+## Pré-Requisitos
+- Node 18+
+- npm
+- PHP 8.2+
+- Composer
+- MySQL 8
+
+(Opcional) Docker e Docker Compose se preferir containerizar o banco.
+
 ## Subir Banco de Dados (Docker)
 ```bash
 docker compose up -d
